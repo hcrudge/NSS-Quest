@@ -57,13 +57,22 @@ namespace Quest
                 guessRandom,
                 favoriteBeatle
             };
-
+            
+            bool runChallenge = true;
             // Loop through all the challenges and subject the Adventurer to them
+            while(runChallenge)
+            {
             foreach (Challenge challenge in challenges)
             {
                 challenge.RunChallenge(theAdventurer);
             }
-
+            Console.WriteLine("Would you like to play again? (Y/N)");
+            string playAgain = Console.ReadLine().ToLower();
+            if (playAgain == "n")
+            {
+                break;
+            }
+            }
             // This code examines how Awesome the Adventurer is after completing the challenges
             // And praises or humiliates them accordingly
             if (theAdventurer.Awesomeness >= maxAwesomeness)
